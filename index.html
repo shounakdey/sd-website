@@ -71,7 +71,7 @@
             padding: 1rem;
             border-radius: 5px;
             box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
-            width: 300px;                                         /*Increases the width of the drop-down menu*/
+            width: 300px;
             max-width: 90vw;
             overflow: hidden;
             transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
@@ -103,9 +103,9 @@
             padding-top: 110px; /* Ensures content starts below the fixed header */
         }
         section {
-            padding: 40px 40px 40px 40px;
+            padding: 40px 20px;
             max-width: 800px;
-            margin: 20px auto 5px auto;
+            margin: 20px auto;
             background: white;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -117,8 +117,8 @@
         .profile-pic {
             width: 150px;
             height: 150px;
-            border-radius: 100%;
-            margin-right: 40px;
+            border-radius: 50%;
+            margin-right: 20px;
             background: lightgray;
         }
     </style>
@@ -139,32 +139,34 @@
         </div>
     </header>
     
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="about-container">
-            <img src="SD_Photo.jpg" alt="Profile Picture" class="profile-pic">
-            <p>Research Scholar in Computational Fluid Dynamics - Specializing in Chebyshev spectral methods and phase field applications on two-layer Rayleigh-Benard-Marangoni flows</p>
-        </div>
-    </section>
-    
-    <section id="achievements">
-        <h2>Academic Achievements</h2>
-        <ul>
-            <li>Pursuing PhD in Fluid Mechanics, specializing in Rayleigh-Benard-Marangoni Flows, Jawaharlal Nehru Centre for Advanced Scientific Research, Bengaluru</li>
-            <li>Intern at University of Bordeaux during June-July 2024.</li>
-            <li>Bachelor's in Mechanical Engineering from RV College of Engineering, Bengaluru, India</li>
-        </ul>
-    </section>
-    
-    <section id="projects">
-        <h2>Projects & Research</h2>
-        <p>I am developing a spectral solver utilizing the Chebyshev Spectral method to solve for two-layer RBM convection using the Navier-Stokes and the Cahn-Hilliard equation. The solver aims to bring about spectral accuracy to the combined Cahn-Hilliard-Navier-Stokes solver and serve as a test bench for further problems, including Rayleigh-Taylor instability.</p>
-    </section>
-    
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:shounakd@jncasr.ac.in">shounakd@jncasr.ac.in</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/shounakdey/" target="_blank">Shounak Dey</a></p>
-    </section>
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-container">
+                <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+                <p>Research Scholar in Computational Fluid Dynamics - Specializing in Chebyshev spectral methods and phase field applications on two-layer Rayleigh-Benard-Marangoni flows</p>
+            </div>
+        </section>
+        
+        <section id="achievements">
+            <h2>Academic Achievements</h2>
+            <ul>
+                <li>Pursuing PhD in Fluid Mechanics, specializing in Rayleigh-Benard-Marangoni Flows</li>
+                <li>Intern at University of Bordeaux during June-July 2024.</li>
+                <li>Bachelor's in Mechanical Engineering from RV College of Engineering</li>
+            </ul>
+        </section>
+        
+        <section id="projects">
+            <h2>Projects & Research</h2>
+            <p>I am developing a spectral solver utilizing the Chebyshev Spectral method to solve for two-layer RBM convection using the Navier-Stokes and the Cahn-Hilliard equation. The solver aims to bring about spectral accuracy to the combined Cahn-Hilliard-Navier-Stokes solver and serve as a test bench for further problems, including Rayleigh-Taylor instability.</p>
+        </section>
+        
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:shounakd@jncasr.ac.in">shounakd@jncasr.ac.in</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/shounakdey/" target="_blank">Shounak Dey</a></p>
+        </section>
+    </main>
 </body>
 </html>
