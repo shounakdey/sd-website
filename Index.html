@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Academic Journey</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer>
+        function toggleMenu(event) {
+            event.stopPropagation();
+            const menu = document.getElementById("menu");
+            const icon = document.querySelector(".menu-icon");
+            if (menu.classList.contains("show-menu")) {
+                menu.classList.remove("show-menu");
+                icon.style.transform = "rotate(0deg)";
+            } else {
+                menu.classList.add("show-menu");
+                icon.style.transform = "rotate(90deg)";
+            }
+        }
+
+        function closeMenu(event) {
+            const menu = document.getElementById("menu");
+            if (!event.target.closest(".menu-container")) {
+                menu.classList.remove("show-menu");
+                document.querySelector(".menu-icon").style.transform = "rotate(0deg)";
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eaeaea;
+            color: #333;
+        }
+        header {
+            background: black;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .menu-container {
+            position: relative;
+        }
+        .menu-icon {
+            display: block;
+            cursor: pointer;
+            font-size: 2rem;
+            background: #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin-right: 50px;
+            transition: transform 0.3s ease-in-out;
+        }
+        nav {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background: black;
+            display: none;
+            flex-direction: column;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+            width: 200px;
+            max-width: 90vw;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        .show-menu {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            padding: 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        nav ul li:hover {
+            background: gray;
+        }
+        section {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 100px auto 5px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .about-container {
+            display: flex;
+            align-items: center;
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 20px;
+            background: lightgray;
+        }
+    </style>
+</head>
+<body onclick="closeMenu(event)">
+    <header>
+        <h1>Shounak Dey</h1>
+        <div class="menu-container">
+            <div class="menu-icon" onclick="toggleMenu(event)">☰</div>
+            <nav id="menu">
+                <ul>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#projects">Projects & Research</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-container">
+            <img src="SD_Photo.jpg" alt="Profile Picture" class="profile-pic">
+            <p>Research Scholar in Computational Fluid Dynamics - Specializing in Chebyshev spectral methods and phase field applications on two-layer Rayleigh-Benard-Marangoni flows</p>
+        </div>
+    </section>
+    
+    <section id="achievements">
+        <h2>Academic Achievements</h2>
+        <ul>
+            <li>Pursuing PhD in Fluid Mechanics, specializing in Rayleigh-Benard-Marangoni Flows</li>
+            <li>Intern at University of Bordeaux during June-July 2024.</li>
+            <li>Bachelor's in Mechanical Engineering from RV College of Engineering</li>
+        </ul>
+    </section>
+    
+    <section id="projects">
+        <h2>Projects & Research</h2>
+        <p>I am developing a spectral solver utilizing the Chebyshev Spectral method to solve for two-layer RBM convection using the Navier-Stokes and the Cahn-Hilliard equation. The solver aims to bring about spectral accuracy to the combined Cahn-Hilliard-Navier-Stokes solver and serve as a test bench for further problems, including Rayleigh-Taylor instability.</p>
+    </section>
+    
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:shounakd@jncasr.ac.in">shounakd@jncasr.ac.in</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/shounakdey/" target="_blank">Shounak Dey</a></p>
+    </section>
+</body>
+</html>
