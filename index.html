@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shounak Dey</title>
+    <title>My Academic Journey</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script defer>
         function toggleMenu(event) {
             event.stopPropagation();
@@ -26,6 +27,22 @@
                 document.querySelector(".menu-icon").style.transform = "rotate(0deg)";
             }
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const links = document.querySelectorAll("nav ul li a");
+            links.forEach(link => {
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    const targetId = this.getAttribute("href").substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    window.scrollTo({
+                        top: targetSection.offsetTop - document.querySelector("header").offsetHeight - 12,
+                        behavior: "smooth"
+                    });
+                    closeMenu(event);
+                });
+            });
+        });
     </script>
     <style>
         body {
@@ -34,6 +51,7 @@
             padding: 0;
             background-color: #eaeaea;
             color: #333;
+            scroll-behavior: smooth;
         }
         header {
             background: black;
@@ -62,26 +80,22 @@
             transition: transform 0.3s ease-in-out;
         }
         nav {
-            position: absolute;
-            top: 60px;
-            right: 0;
-            background: black;
+            position: fixed;
+            top: 100px;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 100px);
+            background: rgba(0, 0, 0, 0.8);
             display: none;
             flex-direction: column;
-            padding: 1rem;
-            border-radius: 5px;
-            box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
-            width: 300px;
-            max-width: 90vw;
-            overflow: hidden;
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            justify-content: center;
+            align-items: center;
             opacity: 0;
-            transform: translateY(-10px);
+            transition: opacity 0.3s ease-in-out;
         }
         .show-menu {
             display: flex;
             opacity: 1;
-            transform: translateY(0);
         }
         nav ul {
             list-style: none;
@@ -89,38 +103,143 @@
             text-align: center;
         }
         nav ul li {
-            padding: 10px;
+            padding: 30px 0;
         }
         nav ul li a {
             color: white;
             text-decoration: none;
+            font-size: 1.5rem;
             display: block;
+            padding: 10px; /* Apply consistent padding */
+            text-align: center;
+            transition: background 0.3s;
         }
-        nav ul li:hover {
-            background: gray;
+
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
         }
+
         main {
-            padding-top: 110px; /* Ensures content starts below the fixed header */
+            padding-top: 110px;
         }
         section {
-            padding: 40px 20px;
+            padding: 40px;
             max-width: 800px;
             margin: 20px auto;
             background: white;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            min-height: 72vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .about-container {
             display: flex;
             align-items: center;
+            justify-content: space-between;
+        }
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-left: 50px;
         }
         .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 100%;
-            margin-right: 20px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
             background: lightgray;
+            margin-bottom: 10px;
         }
+        .profile-section p {
+            margin: 5px 0;
+            padding-left: 10px;
+        }
+        .about-text {
+            flex: 1;
+            padding-left: 100px;
+        }
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    font-size: 24px; /* Icon size */
+    color: #333; /* Default icon color */
+    transition: color 0.3s, transform 0.2s;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #0077b5; /* LinkedIn blue */
+    transform: scale(1.2); /* Slight zoom effect */
+}
+
+
+	#achievements ul {
+  	  list-style-type: disc; /* Default bullet style */
+  	  padding-left: 20px; /* Indent bullets */
+	}
+
+	#achievements ul li {
+    	margin-bottom: 10px; /* Space between list items */
+	}
+
+
+	@media (max-width: 768px) {
+    	header {
+     	   padding: 1rem;
+   	}
+
+  	.menu-icon {
+  	   font-size: 1.5rem;
+  	   padding: 8px;
+  	}
+
+  	nav {
+   	   top: 80px; /* Adjust to fit the smaller header */
+   	   height: calc(100vh - 80px);
+   	}
+
+    	section {
+    	   padding: 20px;
+    	   max-width: 95%;
+     	   min-height: auto;
+   	}
+
+    	.about-container {
+        flex-direction: column; /* Stack profile picture and text */
+        align-items: center;
+        text-align: center;
+    	}
+
+    	.profile-section {
+    	 padding-left: 0;
+    	}
+
+    	.about-text {
+        	padding-left: 0;
+    	}
+
+   	 .profile-pic {
+            width: 200px; /* Reduce profile picture size */
+    	    height: 200px;
+    	}
+
+    	nav ul li {
+        padding: 20px 0; /* Reduce spacing for menu options */
+    	}
+
+    	nav ul li a {
+        font-size: 1.2rem; /* Reduce font size */
+    	}
+}
+
     </style>
 </head>
 <body onclick="closeMenu(event)">
@@ -141,31 +260,51 @@
     
     <main>
         <section id="about">
-            <h2>About Me</h2>
             <div class="about-container">
-                <img src="SD_Photo.jpg" alt="Profile Picture" class="profile-pic">
-                <p>Research Scholar in Computational Fluid Dynamics - Specializing in Chebyshev spectral methods and phase field applications on two-layer Rayleigh-Benard-Marangoni flows</p>
+                <div class="profile-section">
+                    <img src="SD_Photo2.jpg" alt="Profile Picture" class="profile-pic">
+                    <p>PhD Candidate</p>
+                    <p>Engineering Mechanics Unit</p>
+                    <p>JNCASR, Bengaluru</p>
+
+		    <!-- Social Icons and CV Download -->
+   			 <div class="social-icons">
+       			 <a href="mailto:shounakd@jncasr.ac.in" target="_blank">
+          		  <i class="fas fa-envelope"></i>
+      			  </a>
+       			 <a href="https://www.linkedin.com/in/shounakdey/" target="_blank">
+         		   <i class="fab fa-linkedin"></i>
+       			 </a>
+       			 <a href="Shounak_Dey_CV.pdf" download>
+          		  <i class="fas fa-file-download"></i>
+       			 </a>
+    			</div>
+                </div>
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>Hello! I am <strong>Shounak Dey</strong>, a PhD Candidate in the Engineering Mechanics Unit at <strong>JNCASR, Bengaluru</strong>. My research focuses on <strong>Computational Fluid Dynamics (CFD)</strong>, <strong>Heat Transfer</strong>, and <strong>Numerical Methods</strong>, exploring complex flow phenomena using computational and experimental approaches.</p>
+                    <p>Currently, I am working on the numerical investigation of two-layer <strong>Rayleigh-Bénard-Marangoni (RBM) flows</strong> using the <strong>Chebyshev spectral method</strong> to study convective instabilities in multi-layer fluid systems. Additionally, I have conducted an experimental investigation of water droplet contact angles on different substrates, contributing to surface wettability research.</p>
+                    <p>I also gained research experience as an intern at the <strong>University of Bordeaux</strong>, where I helped develop a spectral solver for the <strong>Cahn-Hilliard equation</strong>, used in phase separation and interfacial dynamics studies.</p>
+                    <p>This website showcases my academic journey, research projects, and contributions. I look forward to connecting with researchers and professionals in related fields. Feel free to explore my work and reach out for discussions or collaborations!</p>
+                </div>
             </div>
         </section>
-        
-        <section id="achievements">
-            <h2>Academic Achievements</h2>
-            <ul>
-                <li>Pursuing PhD in Fluid Mechanics, specializing in Rayleigh-Benard-Marangoni Flows</li>
-                <li>Intern at University of Bordeaux during June-July 2024.</li>
-                <li>Bachelor's in Mechanical Engineering from RV College of Engineering</li>
-            </ul>
-        </section>
-        
+  	      <section id="achievements">
+  		  <h2>Academic Achievements</h2>
+  		  <ul>
+    		    <li>Pursuing PhD in Fluid Mechanics, specializing in Rayleigh-Benard-Marangoni Flows from JNCASR, Bengaluru.</li>
+     		    <li>Intern at University of Bordeaux during June-July 2024.</li>
+       		    <li>Bachelor's in Mechanical Engineering from RV College of Engineering, Bengaluru.</li>
+    		  </ul>
+	</section>
         <section id="projects">
-            <h2>Projects & Research</h2>
-            <p>I am developing a spectral solver utilizing the Chebyshev Spectral method to solve for two-layer RBM convection using the Navier-Stokes and the Cahn-Hilliard equation. The solver aims to bring about spectral accuracy to the combined Cahn-Hilliard-Navier-Stokes solver and serve as a test bench for further problems, including Rayleigh-Taylor instability.</p>
+            <h2>Projects and Research</h2>
+            <p>I am developing a spectral solver utilizing the Chebyshev Spectral method to solve for two-layer RBM convection using the Navier-Stokes and the Cahn-Hilliard equation.</p>
         </section>
-        
         <section id="contact">
             <h2>Contact</h2>
             <p>Email: <a href="mailto:shounakd@jncasr.ac.in">shounakd@jncasr.ac.in</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/shounakdey/" target="_blank">Shounak Dey</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/shounakdey/" target="_blank">linkedin.com/in/shounakdey</a></p>
         </section>
     </main>
 </body>
