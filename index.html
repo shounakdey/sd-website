@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shounak Dey</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script defer>
         function toggleMenu(event) {
@@ -28,7 +28,20 @@
             }
         }
 
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            if (document.body.classList.contains("dark-mode")) {
+                localStorage.setItem("darkMode", "enabled");
+            } else {
+                localStorage.setItem("darkMode", "disabled");
+            }
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
+            if (localStorage.getItem("darkMode") === "enabled") {
+                document.body.classList.add("dark-mode");
+            }
+
             const links = document.querySelectorAll("nav ul li a");
             links.forEach(link => {
                 link.addEventListener("click", function(event) {
@@ -43,13 +56,22 @@
                 });
             });
         });
+
     </script>
     <style>
+	/*body {
+	   font-family: Arial, sans-serif;
+ 	   background: url('A_seamless_doodle-style_pattern_featuring_scientif.webp');
+    	   background-repeat: repeat;
+    	   background-size: auto;
+    	   background-attachment: fixed;
+	}*/
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Aptos','Segoe UI', 'Helvetica', 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #eaeaea;
+            background-color: #f4f1e6;
             color: #333;
             scroll-behavior: smooth;
         }
@@ -68,6 +90,9 @@
         }
         .menu-container {
             position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Adds spacing between elements */
         }
         .menu-icon {
             display: block;
@@ -127,13 +152,14 @@
             padding: 40px;
             max-width: 800px;
             margin: 20px auto;
-            background: white;
+            background: #fffdf5;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             min-height: 72vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
+	    /*border: 5px solid #333;*/ /* Adds a solid border */
         }
         .about-container {
             display: flex;
@@ -162,33 +188,73 @@
             flex: 1;
             padding-left: 100px;
         }
-.social-icons {
-    display: flex;
-    gap: 15px;
-    margin-top: 10px;
-}
+         .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
 
-.social-icons a {
-    font-size: 24px; /* Icon size */
-    color: #333; /* Default icon color */
-    transition: color 0.3s, transform 0.2s;
-    text-decoration: none;
-}
+        .social-icons a {
+        font-size: 24px; /* Icon size */
+        color: #333; /* Default icon color */
+        transition: color 0.3s ease-in-out, transform 0.2s;
+        text-decoration: none;
+        }
 
-.social-icons a:hover {
-    color: #0077b5; /* LinkedIn blue */
-    transform: scale(1.2); /* Slight zoom effect */
-}
+        /* Hover Effects */
+        .social-icons a:hover i.fa-envelope {
+            color: darkblue; /* New color when hovered */
+         transform: scale(1.2); /* Slight zoom effect */
+        }
+        .social-icons a:hover i.fa-linkedin {
+            color: #0077b5; /* LinkedIn blue */
+            transform: scale(1.2); /* Slight zoom effect */
+        }
+        .social-icons a:hover i.fa-file-alt {
+            color: red; /* New color when hovered */
+         transform: scale(1.2); /* Slight zoom effect */
+        }
 
+    	#achievements ul {
+      	  list-style-type: disc; /* Default bullet style */
+      	  padding-left: 20px; /* Indent bullets */
+    	}
 
-	#achievements ul {
-  	  list-style-type: disc; /* Default bullet style */
-  	  padding-left: 20px; /* Indent bullets */
-	}
+    	#achievements ul li {
+        	margin-bottom: 10px; /* Space between list items */
+    	}
 
-	#achievements ul li {
-    	margin-bottom: 10px; /* Space between list items */
-	}
+    	.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        .dark-mode section {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+        }
+        .dark-mode a {
+            color: #bb86fc;
+        }
+        .dark-mode a:hover {
+            color: #ffcc00;
+        }
+
+        .dark-mode-toggle {
+            background: #444;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 0.8rem;
+           /* margin-left: 100px; /* Adjust the margin as needed */
+            white-space: nowrap; /* Prevents text wrapping */
+
+        }
+        .dark-mode-toggle:hover {
+            background: #666;
+        }
+
 
 
 	@media (max-width: 768px) {
@@ -245,6 +311,7 @@
 <body onclick="closeMenu(event)">
     <header>
         <h1>Shounak Dey</h1>
+	    <button class="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</button>
         <div class="menu-container">
             <div class="menu-icon" onclick="toggleMenu(event)">☰</div>
             <nav id="menu">
@@ -262,7 +329,7 @@
         <section id="about">
             <div class="about-container">
                 <div class="profile-section">
-                    <img src="SD_Photo.jpg" alt="Profile Picture" class="profile-pic">
+                    <img src="SD_Photo2.jpg" alt="Profile Picture" class="profile-pic">
                     <p>PhD Candidate</p>
                     <p>Engineering Mechanics Unit</p>
                     <p>JNCASR, Bengaluru</p>
@@ -275,8 +342,8 @@
        			 <a href="https://www.linkedin.com/in/shounakdey/" target="_blank">
          		   <i class="fab fa-linkedin"></i>
        			 </a>
-       			 <a href="Shounak_Dey_CV.pdf" download>
-          		  <i class="fas fa-file-download"></i>
+       			 <a href="Shounak_Dey_CV.pdf" target="_blank">
+    			   <i class="fas fa-file-alt"></i>
        			 </a>
     			</div>
                 </div>
