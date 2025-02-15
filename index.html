@@ -30,12 +30,17 @@
 
         function toggleDarkMode() {
             document.body.classList.toggle("dark-mode");
+            const toggleButton = document.querySelector(".dark-mode-toggle");
+            
             if (document.body.classList.contains("dark-mode")) {
+                toggleButton.innerHTML = "☀"; // Moon for Dark Mode
                 localStorage.setItem("darkMode", "enabled");
             } else {
+                toggleButton.innerHTML = "☾"; // Sun for Light Mode
                 localStorage.setItem("darkMode", "disabled");
             }
         }
+
 
         document.addEventListener("DOMContentLoaded", function() {
             if (localStorage.getItem("darkMode") === "enabled") {
@@ -59,13 +64,13 @@
 
     </script>
     <style>
-	/*body {
-	   font-family: Arial, sans-serif;
- 	   background: url('A_seamless_doodle-style_pattern_featuring_scientif.webp');
-    	   background-repeat: repeat;
-    	   background-size: auto;
-    	   background-attachment: fixed;
-	}*/
+    /*body {
+       font-family: Arial, sans-serif;
+       background: url('A_seamless_doodle-style_pattern_featuring_scientif.webp');
+           background-repeat: repeat;
+           background-size: auto;
+           background-attachment: fixed;
+    }*/
 
         body {
             font-family: 'Aptos','Segoe UI', 'Helvetica', 'Arial', sans-serif;
@@ -159,7 +164,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-	    /*border: 5px solid #333;*/ /* Adds a solid border */
+        /*border: 5px solid #333;*/ /* Adds a solid border */
         }
         .about-container {
             display: flex;
@@ -195,36 +200,43 @@
         }
 
         .social-icons a {
-        font-size: 24px; /* Icon size */
-        color: #333; /* Default icon color */
-        transition: color 0.3s ease-in-out, transform 0.2s;
-        text-decoration: none;
+            font-size: 24px; /* Icon size */
+            color: #333; /* Default icon color */
+            transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+            text-decoration: none;
+            margin-left: 5px;
         }
 
         /* Hover Effects */
         .social-icons a:hover i.fa-envelope {
             color: darkblue; /* New color when hovered */
-         transform: scale(1.2); /* Slight zoom effect */
+            transform: scale(1.2); /* Slight zoom effect */
+            transition: transform 0.3s ease;
         }
         .social-icons a:hover i.fa-linkedin {
             color: #0077b5; /* LinkedIn blue */
             transform: scale(1.2); /* Slight zoom effect */
+            transition: transform 0.3s ease;
         }
         .social-icons a:hover i.fa-file-alt {
             color: red; /* New color when hovered */
-         transform: scale(1.2); /* Slight zoom effect */
+            transform: scale(1.2); /* Slight zoom effect */
         }
 
-    	#achievements ul {
-      	  list-style-type: disc; /* Default bullet style */
-      	  padding-left: 20px; /* Indent bullets */
-    	}
+        #achievements ul {
+          list-style-type: disc; /* Default bullet style */
+          padding-left: 20px; /* Indent bullets */
+          font-size: 1em;
+        }
 
-    	#achievements ul li {
-        	margin-bottom: 10px; /* Space between list items */
-    	}
+        #achievements ul li {
+            margin-bottom: 10px; /* Space between list items */
+            font-size: 1em;
+        }
 
-    	.dark-mode {
+        
+
+        .dark-mode {
             background-color: #121212;
             color: #e0e0e0;
         }
@@ -240,78 +252,274 @@
         }
 
         .dark-mode-toggle {
-            background: #444;
-            color: white;
-            border: none;
-            padding: 8px 15px;
+            background: transparent; /* Transparent background */
+            border: 2px solid white; /* White border for contrast */
+            color: white; /* Text/icon color */
+            font-size: 1.5rem; /* Larger icon */
+            width: 50px; /* Circular shape */
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100%; /* Circular button */
             cursor: pointer;
-            border-radius: 5px;
-            font-size: 0.8rem;
-           /* margin-left: 100px; /* Adjust the margin as needed */
-            white-space: nowrap; /* Prevents text wrapping */
-
+            transition: background 0.3s ease, transform 0.3s ease;
         }
+
         .dark-mode-toggle:hover {
-            background: #666;
+            background: rgba(255, 255, 255, 0.2); /* Light hover effect */
+            transform: scale(1.1); /* Slightly enlarge on hover */
+        }
+
+        .dark-mode-toggle:active {
+            transform: scale(0.95); /* Slight click effect */
+        }
+
+        .dark-mode .dark-mode-toggle {
+            border: 2px solid #ffcc00; /* Gold border in dark mode */
+            color: #ffcc00; /* Gold icon in dark mode */
+        }
+
+        .dark-mode .dark-mode-toggle:hover {
+            background: rgba(255, 204, 0, 0.2); /* Gold hover effect */
+        }
+
+        .dark-mode .styled-list-numbered > li::before {
+            color: yellow; /* Change number color in dark mode */
+        }
+
+        /* Smaller button for mobile devices */
+        @media (max-width: 768px) {
+            .dark-mode-toggle {
+                padding: 15px;
+                font-size: 0.9rem;
+                width: 12px; /* Circular shape */
+                height: 25px;
+                border-radius: 50%; /* Circular button */
+            }
+        }
+
+        /* Larger button for desktop screens */
+        @media (min-width: 1024px) {
+            .dark-mode-toggle {
+                padding: 6px 12px;
+                font-size: 1.5rem;                                
+                margin-left: 1110px;
+            }
+        }
+
+        .timeline {
+            margin-top: 30px;
+            padding-left: 20px;
+            /*border-left: 3px solid #333;*/
+            /*align-self: center;*/
+            order = -1;
+        }
+        .timeline-item {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 25px;
+        }
+        .timeline-item::before {
+            content: "\1F393";
+            position: absolute;
+            left: -20px;
+            top: 0;
+            font-size: 20px;
         }
 
 
 
-	@media (max-width: 768px) {
-    	header {
-     	   padding: 1rem;
-   	}
+    @media (max-width: 768px) {
+        header {
+           padding: 1rem;
+    }
 
-  	.menu-icon {
-  	   font-size: 1.5rem;
-  	   padding: 8px;
-  	}
+    .menu-icon {
+       font-size: 1.5rem;
+       padding: 8px;
+    }
 
-  	nav {
-   	   top: 80px; /* Adjust to fit the smaller header */
-   	   height: calc(100vh - 80px);
-   	}
+    nav {
+       top: 80px; /* Adjust to fit the smaller header */
+       height: calc(100vh - 80px);
+    }
 
-    	section {
-    	   padding: 20px;
-    	   max-width: 95%;
-     	   min-height: auto;
-   	}
+        section {
+           padding: 20px;
+           max-width: 95%;
+           min-height: auto;
+    }
 
-    	.about-container {
+        .about-container {
         flex-direction: column; /* Stack profile picture and text */
         align-items: center;
         text-align: center;
-    	}
+        }
 
-    	.profile-section {
-    	 padding-left: 0;
-    	}
+        .profile-section {
+         padding-left: 0;
+        }
 
-    	.about-text {
-        	padding-left: 0;
-    	}
+        .about-text {
+            padding-left: 0;
+        }
 
-   	 .profile-pic {
+     .profile-pic {
             width: 200px; /* Reduce profile picture size */
-    	    height: 200px;
-    	}
+            height: 200px;
+        }
 
-    	nav ul li {
+        nav ul li {
         padding: 20px 0; /* Reduce spacing for menu options */
-    	}
+        }
 
-    	nav ul li a {
+        nav ul li a {
         font-size: 1.2rem; /* Reduce font size */
-    	}
-}
+        }
+    }
+
+    form {
+        max-width: 500px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    form label {
+        font-weight: bold;
+    }
+
+    form input,
+    form textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: border 0.3s ease-in-out;
+    }
+
+    form input:focus,
+    form textarea:focus {
+        border-color: #0077b5;
+        outline: none;
+    }
+
+    form textarea {
+        min-height: 100px;
+        resize: none;
+    }
+
+    button {
+        width: 110%;
+        background: #0077b5;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    }
+
+    button:hover {
+        background: #005f8b;
+        transform: scale(1.05);
+    }
+
+    #contact {
+        text-align: center;
+    }
+
+    form {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+ /*   .contact-icons a {
+        font-size: 1.8rem;
+        color: #333;
+        transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    }
+
+    .contact-icons a:hover {
+        color: #0077b5;
+        transform: scale(1.2);
+    }*/
+
+
+    .cv-download {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: none;
+        color: none;
+        text-decoration: none;
+        padding: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: background 0.3s ease-in-out;
+        cursor: pointer;
+    }
+    .cv-download img {
+        width: 20px;
+        height: 20px;
+        transition: transform 0.3s ease, filter 0.3s ease, fill 0.3s ease;
+    }
+    .cv-download:hover {
+        background: none;
+    }
+    .cv-download:hover img {
+        fill: red; /* New color when hovered */
+        transform: scale(1.2);
+        filter: brightness(1.5);
+    }
+
+    .styled-list-numbered {
+            counter-reset: list-counter;
+            list-style-type: none;
+            padding-left: 20px;
+            position: relative;
+    }
+    .styled-list-numbered > li {
+            counter-increment: list-counter;
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+    }
+
+        /* Styling main bullet points differently */
+        .styled-list-numbered > li{
+/*            font-family: "Times New Roman", sans-serif;*/
+            font-weight: bold;
+            font-size: 1.05em;
+        }
+
+        /* Keeping sub-bullet points default */
+        .styled-list-numbered li ul li{
+/*            font-family: "Aptos", sans-serif;;*/
+            font-weight: normal;
+            font-size: 0.9em;
+        }
+
+    .styled-list-numbered > li::before {
+            content: counter(list-counter) ".";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: black;
+    }
+
 
     </style>
 </head>
 <body onclick="closeMenu(event)">
     <header>
         <h1>Shounak Dey</h1>
-	    <button class="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</button>
+        <button class="dark-mode-toggle" onclick="toggleDarkMode()">☾</button>
         <div class="menu-container">
             <div class="menu-icon" onclick="toggleMenu(event)">☰</div>
             <nav id="menu">
@@ -329,49 +537,98 @@
         <section id="about">
             <div class="about-container">
                 <div class="profile-section">
-                    <img src="SD_Photo.jpg" alt="Profile Picture" class="profile-pic">
+                    <img src="SD_Photo2.jpg" alt="Profile Picture" class="profile-pic">
                     <p>PhD Candidate</p>
                     <p>Engineering Mechanics Unit</p>
                     <p>JNCASR, Bengaluru</p>
 
-		    <!-- Social Icons and CV Download -->
-   			 <div class="social-icons">
-       			 <a href="mailto:shounakd@jncasr.ac.in" target="_blank">
-          		  <i class="fas fa-envelope"></i>
-      			  </a>
-       			 <a href="https://www.linkedin.com/in/shounakdey/" target="_blank">
-         		   <i class="fab fa-linkedin"></i>
-       			 </a>
-       			 <a href="Shounak_Dey_CV.pdf" target="_blank">
-    			   <i class="fas fa-file-alt"></i>
-       			 </a>
-    			</div>
+                <!-- Social Icons and CV Download -->
+                 <div class="social-icons">
+                     <a href="mailto:shounakd@jncasr.ac.in" target="_blank">
+                      <i class="fas fa-envelope"></i>
+                      </a>
+                     <a href="https://www.linkedin.com/in/shounakdey/" target="_blank">
+                       <i class="fab fa-linkedin"></i>
+                     </a>
+                     <!-- <a href="path-to-your-cv.pdf" download class="cv-download">
+                        &#128196; CV
+                     </a> -->
+
+                     <a href="Shounak_Dey_CV.pdf" target="_blank" class="cv-download">
+                       <img src="cv-icon.svg" alt="Download Icon" width="20">
+                       <!-- <i class="fas fa-file-alt"></i> -->
+                     </a>
+                </div>
                 </div>
                 <div class="about-text">
                     <h2>About Me</h2>
                     <p>Hello! I am <strong>Shounak Dey</strong>, a PhD Candidate in the Engineering Mechanics Unit at <strong>JNCASR, Bengaluru</strong>. My research focuses on <strong>Computational Fluid Dynamics (CFD)</strong>, <strong>Heat Transfer</strong>, and <strong>Numerical Methods</strong>, exploring complex flow phenomena using computational and experimental approaches.</p>
                     <p>Currently, I am working on the numerical investigation of two-layer <strong>Rayleigh-Bénard-Marangoni (RBM) flows</strong> using the <strong>Chebyshev spectral method</strong> to study convective instabilities in multi-layer fluid systems. Additionally, I have conducted an experimental investigation of water droplet contact angles on different substrates, contributing to surface wettability research.</p>
-                    <p>I also gained research experience as an intern at the <strong>University of Bordeaux</strong>, where I helped develop a spectral solver for the <strong>Cahn-Hilliard equation</strong>, used in phase separation and interfacial dynamics studies.</p>
-                    <p>This website showcases my academic journey, research projects, and contributions. I look forward to connecting with researchers and professionals in related fields. Feel free to explore my work and reach out for discussions or collaborations!</p>
+                    <div class="timeline">
+                        <div class="timeline-item">PhD Candidate - JNCASR, Bengaluru</div>
+                        <div class="timeline-item">B.E. (Mech. Engg.) - RV College of Engineering, Bengaluru</div>
+                    </div>
+                    <!-- <p>I also gained research experience as an intern at the <strong>University of Bordeaux</strong>, where I helped develop a spectral solver for the <strong>Cahn-Hilliard equation</strong>, used in phase separation and interfacial dynamics studies.</p> -->
+                    <!-- <p>This website showcases my academic journey, research projects, and contributions. I look forward to connecting with researchers and professionals in related fields. Feel free to explore my work and reach out for discussions or collaborations!</p> -->
                 </div>
             </div>
         </section>
-  	      <section id="achievements">
-  		  <h2>Academic Achievements</h2>
-  		  <ul>
-    		    <li>Pursuing PhD in Fluid Mechanics, specializing in Rayleigh-Benard-Marangoni Flows from JNCASR, Bengaluru.</li>
-     		    <li>Intern at University of Bordeaux during June-July 2024.</li>
-       		    <li>Bachelor's in Mechanical Engineering from RV College of Engineering, Bengaluru.</li>
-    		  </ul>
-	</section>
+          <section id="achievements">
+          <h2>Academic Achievements</h2>
+          <ul>
+                <li>Pursuing PhD in Fluid Mechanics, specializing in Rayleigh-Benard-Marangoni Flows from JNCASR, Bengaluru.</li>
+                <li>Intern at University of Bordeaux during June-July 2024.</li>
+                <li>Bachelor's in Mechanical Engineering from RV College of Engineering, Bengaluru.</li>
+          </ul>
+    </section>
         <section id="projects">
             <h2>Projects and Research</h2>
-            <p>I am developing a spectral solver utilizing the Chebyshev Spectral method to solve for two-layer RBM convection using the Navier-Stokes and the Cahn-Hilliard equation.</p>
+            <ul class="styled-list-numbered">
+                <li>JNCASR, Bengaluru.
+                    <ul>
+                    <li>Currently working under Dr. Diwakar SV on the numerical investivagtion of two-layer Rayleigh-Benard-Marangoni flows using Chebyshev Spectral Method and utilising the Cahn-Hilliard Equation to model the phases.</li>
+                    </ul>
+                </li>
+                <li>University of Bordeaux, France (June-July 2024)
+                    <ul>
+                    <li>Worked under Prof. Sakir Amiroudine to develop a Chebyshev Spectral method to solve the 2D Cahn-Hilliard Equation under specific boundary conditions</li>
+                    </ul>
+                </li>
+                <li>RV College of Engineering, Bengaluru.
+                    <ul>
+                    <li>Investigated passive control of boundary layer separation in low-pressure gas turbines under Asst. Prof. Gajanan to enhance performance using turbine blades modified with a trip device. The trip, placed at peak velocity on the suction surface, significantly improved flow reattachment and reduced total pressure loss.</li>
+                    </ul>
+                </li>
+            </ul>
         </section>
         <section id="contact">
-            <h2>Contact</h2>
-            <p>Email: <a href="mailto:shounakd@jncasr.ac.in">shounakd@jncasr.ac.in</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/shounakdey/" target="_blank">linkedin.com/in/shounakdey</a></p>
+            <h2>Let's Connect!</h2>
+            <form action="https://formspree.io/f/manqpjda" method="POST">
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                
+                <button type="submit">Send</button>
+            </form>
+            <!-- <p>Email: <a href="mailto:shounakd@jncasr.ac.in">shounakd@jncasr.ac.in</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/shounakdey/" target="_blank">linkedin.com/in/shounakdey</a></p> -->
+            <!-- <div class="social-icons">
+                     <a href="mailto:shounakd@jncasr.ac.in" target="_blank">
+                      <i class="fas fa-envelope"></i>
+                      </a>
+                     <a href="https://www.linkedin.com/in/shounakdey/" target="_blank">
+                       <i class="fab fa-linkedin"></i>
+                     </a>
+                     <a href="Shounak_Dey_CV.pdf" target="_blank">
+                       <i class="fas fa-file-alt"></i>
+                     </a>
+            </div> -->
         </section>
     </main>
 </body>
